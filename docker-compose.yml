@@ -12,9 +12,12 @@ services:
     image: 'bitnami/wordpress:latest'
     labels:
       kompose.service.type: nodeport
-    ports:
-      - '80:80'
-      - '443:443'
+    #ports:
+      #- '80:80'
+      #- '443:443'
+    networks:
+      docker_net:
+        ipv4_address: 192.168.2.78
     volumes:
       - wordpress_data:/bitnami
     depends_on:
@@ -30,3 +33,7 @@ volumes:
     driver: local
   wordpress_data:
     driver: local
+
+networks:
+  docker_net:
+    external: true
