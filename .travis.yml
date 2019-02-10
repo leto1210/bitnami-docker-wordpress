@@ -15,7 +15,7 @@ before_script:
   - sudo mkdir -p /etc/letsencrypt
   - mkdir -p /opt/docker/bitnami/mariadb
   - mkdir -p /opt/docker/bitnami/wordpress
-  - sudochmod -R 777 /opt/docker/bitnami/mariadb
+  - sudo chmod -R 777 /opt/docker/bitnami/mariadb
   # Create docker network
   - docker network create --subnet=192.168.2.0/24 macvlan-network
  
