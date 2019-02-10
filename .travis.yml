@@ -4,25 +4,26 @@ services: docker
 env:
   - DOCKER_COMPOSE_VERSION=1.21.1
 
-before_install:
-  # Create directory
-  - mkdir -p /etc/letsencrypt
-  - mkdir -p /opt/docker/bitnami/mariadb
-  - mkdir -p /opt/docker/bitnami/wordpress
-  # Create docker network
-  - docker network create --subnet=192.168.2.0/24 macvlan-network
+install:
   # Install Docker Compose
   - curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o "$HOME/bin/docker-compose"
   - chmod +x "$HOME/bin/docker-compose"
   - docker-compose --version
   
-install:
+before_script:
+   # Create directory
+  - mkdir -p /etc/letsencrypt
+  - mkdir -p /opt/docker/bitnami/mariadb
+  - mkdir -p /opt/docker/bitnami/wordpress
+  # Create docker network
+  - docker network create --subnet=192.168.2.0/24 macvlan-network
+ 
+script:
   - docker-compose up -d
+  - sleep 30
   - docker-compose ps
   - docker-compose logs
   #- docker-compose down -v
-
-script:
   - docker ps | grep -q wordpress
   
 after_script:
