@@ -12,9 +12,9 @@ services:
     image: 'bitnami/wordpress:latest'
     labels:
       kompose.service.type: nodeport
-    #ports:
-      #- '80:80'
-      #- '443:443'
+    ports:
+      - '80:80'
+      - '443:443'
     networks:
       macvlan-network:
         ipv4_address: 192.168.2.78
