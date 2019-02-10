@@ -12,7 +12,7 @@ install:
   
 before_script:
    # Create directory
-  - mkdir -p /etc/letsencrypt
+  - sudo mkdir -p /etc/letsencrypt
   - mkdir -p /opt/docker/bitnami/mariadb
   - mkdir -p /opt/docker/bitnami/wordpress
   # Create docker network
