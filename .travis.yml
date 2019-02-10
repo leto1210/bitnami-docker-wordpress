@@ -1,16 +1,8 @@
-language: minimal
+language: generic
 services: docker
 
 env:
   - DOCKER_COMPOSE_VERSION=1.21.1
-
-branches:
-  only:
-    - master
-
-#before_script:
-  # Build images
-  #- docker-compose build
 
 before_install:
   # Install Docker Compose
