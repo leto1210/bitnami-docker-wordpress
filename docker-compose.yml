@@ -16,7 +16,7 @@ services:
       #- '80:80'
       #- '443:443'
     networks:
-      docker_net:
+      macvlan-network:
         ipv4_address: 192.168.2.78
     volumes:
       - wordpress_data:/bitnami
@@ -35,5 +35,5 @@ volumes:
     driver: local
 
 networks:
-  docker_net:
+  macvlan-network:
     external: true
