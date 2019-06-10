@@ -21,7 +21,7 @@ services:
       - '8080:80'
       - '4443:443'
     volumes:
-      - phpmyadmin_data:/bitnami
+      - /opt/docker/bitnami/phpmyadmin:/bitnami
   wordpress:
     image: 'bitnami/wordpress:latest'
     container_name: wordpress
